@@ -81,7 +81,7 @@ func NewDataConfidence(x, y []float64, confidence float64) (*Ellipse, error) {
 	// The sum of square Gaussian is distributed according to Chi-squared distribution:
 	// https://en.wikipedia.org/wiki/Chi-squared_distribution
 	src := rand.New(rand.NewSource(1))
-	chi2 := distuv.ChiSquared{2, src}
+	chi2 := distuv.ChiSquared{K: 2, Src: src}
 	// pc.VarsTo returns eigenvalues in descending order
 	a := math.Sqrt(chi2.Quantile(confidence)) * math.Sqrt(eigVals[0])
 	b := math.Sqrt(chi2.Quantile(confidence)) * math.Sqrt(eigVals[1])
