@@ -10,3 +10,35 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+_build
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+*.test
+*.prof
+
+# ignore go build and test outputs
+coverage.txt
+coverage.out
+
+# ignore HTML files produced by gosom
+*.html
+vendor/
+examples/confidence/confidence
