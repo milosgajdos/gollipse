@@ -6,9 +6,9 @@
 
 # gollipse
 
-`gollipse` provides a simple `Go` package which allows to easily create [ellipse](https://en.wikipedia.org/wiki/Ellipse). The package provides a simple API to generate a predefined number of points on the ellipse curve which can then be plotted and saved in a file.
+`gollipse` provides a simple `Go` package which allows to easily create [ellipse](https://en.wikipedia.org/wiki/Ellipse) curve. The package provides a simple API to generate a predefined number of points on the ellipse curve which can then be plotted and saved as an image in a file.
 
-On top of creating simple ellipses, the package API also provides a way to create confidence ellipse from 2D normally distributed data i.e. [Gaussian](https://en.wikipedia.org/wiki/Gaussian_function) data, with a predefined level of confidence the ellipse should encompass. This is handy for covariance error analysis when dealing with 2D normally distributed data.
+Besides the abilitiy to create simple ellipses, the package API also provides a way to create confidence ellipses from normally distributed 2D data i.e. [Gaussian](https://en.wikipedia.org/wiki/Gaussian_function) data, with a predefined level of confidence. This is handy for covariance error analysis when dealing with 2D normally distributed data.
 
 The package takes advange of the amazing [gonum](https://www.gonum.org) suite of libraries for scientific computing in `Go` [1]
 

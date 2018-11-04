@@ -73,7 +73,7 @@ func main() {
 	// ellipse line plot
 	line.Color = color.RGBA{B: 255, A: 255}
 	p.Add(line)
-	p.Legend.Add(fmt.Sprintf("%.2f Confidence", 100*confidence), line)
+	p.Legend.Add(fmt.Sprintf("%.2f%%", 100*confidence), line)
 
 	// plot mean values
 	var meanXYs plotter.XYs
@@ -89,7 +89,7 @@ func main() {
 	scatterMean.GlyphStyle.Radius = vg.Points(3)
 
 	p.Add(scatterMean)
-	p.Legend.Add("Mean Value", scatterMean)
+	p.Legend.Add("Mean", scatterMean)
 
 	// Save the plot to a PNG file.
 	if err := p.Save(4*vg.Inch, 4*vg.Inch, "confidence.png"); err != nil {
