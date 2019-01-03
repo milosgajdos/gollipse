@@ -3,62 +3,79 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:8fda70c57919d8b3eda9806c43d26ad27efd6049571b838f6351d4c4b9dd5767"
   name = "github.com/ajstarks/svgo"
   packages = ["."]
+  pruneopts = "UT"
   revision = "6ce6a3bcf6cde6c5007887677ebd148ec30f42a4"
 
 [[projects]]
+  digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
+  pruneopts = "UT"
   revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
   version = "v1.1.1"
 
 [[projects]]
   branch = "master"
+  digest = "1:7a6377256f670508711c56c25556d639e673c0fa0f519c5a758fdcbfc8af9ac8"
   name = "github.com/golang/freetype"
   packages = [
     ".",
     "raster",
-    "truetype"
+    "truetype",
   ]
+  pruneopts = "UT"
   revision = "e2365dfdc4a05e4b8299a783240d4a7d5a65d4e4"
 
 [[projects]]
+  digest = "1:db23aee6f0ff15fbcd0559d660f91d6b738baeeca46d953396b2fdcec93e1260"
   name = "github.com/jung-kurt/gofpdf"
   packages = ["."]
+  pruneopts = "UT"
   revision = "14c1db30737a138f8d9797cffea58783892b2fae"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:79d2dd4ecf0c5b24e0a372768fd523242098338ab4453b3422bfe6ef15627b88"
   name = "github.com/llgcode/draw2d"
   packages = [
     ".",
     "draw2dbase",
-    "draw2dimg"
+    "draw2dimg",
   ]
+  pruneopts = "UT"
   revision = "f52c8a71aff06ab8df41843d33ab167b36c971cd"
 
 [[projects]]
+  digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
+  pruneopts = "UT"
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
+  pruneopts = "UT"
   revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
   version = "v1.2.2"
 
 [[projects]]
   branch = "master"
+  digest = "1:47bcbdf2a60a0bdd142f07f60771078857310fd1ededeb03956add7c7f6bef33"
   name = "golang.org/x/exp"
   packages = ["rand"]
-  revision = "42ba7d4b6eb299bf56fcfc4f0541a857ad0e2da3"
+  pruneopts = "UT"
+  revision = "b68661188fbf428a0320a02a2a145635201cabed"
 
 [[projects]]
   branch = "master"
+  digest = "1:7813ed9fe0d41dbe34f220634c84910ebd621e61a0bd5afaefc57dc1dc3c6a4c"
   name = "golang.org/x/image"
   packages = [
     "draw",
@@ -66,12 +83,14 @@
     "math/f64",
     "math/fixed",
     "tiff",
-    "tiff/lzw"
+    "tiff/lzw",
   ]
-  revision = "63626fb251ce5d89650d28bc5d6ccd7d63a70fef"
+  pruneopts = "UT"
+  revision = "cd38e8056d9b27bb2f265effa37fb0ea6b8a7f0f"
 
 [[projects]]
   branch = "master"
+  digest = "1:75ede66bde4922b30b9967e730fda020c4baec230de35f6c593cd80950c102ad"
   name = "gonum.org/v1/gonum"
   packages = [
     "blas",
@@ -91,12 +110,15 @@
     "mathext/internal/cephes",
     "mathext/internal/gonum",
     "stat",
-    "stat/distuv"
+    "stat/combin",
+    "stat/distuv",
   ]
-  revision = "400065bf7646f22e413f120f28a72777e7773518"
+  pruneopts = "UT"
+  revision = "16380329fcd8f07227b82c1c92cadea7a1bef000"
 
 [[projects]]
   branch = "master"
+  digest = "1:bb831584f6a0c92106ea0a0a4659d814a7b217c24056784562ee5834c3cc9dda"
   name = "gonum.org/v1/plot"
   packages = [
     ".",
@@ -109,13 +131,25 @@
     "vg/vgeps",
     "vg/vgimg",
     "vg/vgpdf",
-    "vg/vgsvg"
+    "vg/vgsvg",
   ]
-  revision = "4632fe2bf7c66a9602ea7e74ba77215980eee2af"
+  pruneopts = "UT"
+  revision = "e14e8c2c5cd7809993510b4a6b421501812c6d35"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "19801b6e04dc082021ab4f7ed01d31c502442a4ca00edd25b2506225f77abc8c"
+  input-imports = [
+    "github.com/stretchr/testify/assert",
+    "golang.org/x/exp/rand",
+    "gonum.org/v1/gonum/floats",
+    "gonum.org/v1/gonum/mat",
+    "gonum.org/v1/gonum/stat",
+    "gonum.org/v1/gonum/stat/distuv",
+    "gonum.org/v1/plot",
+    "gonum.org/v1/plot/plotter",
+    "gonum.org/v1/plot/vg",
+    "gonum.org/v1/plot/vg/draw",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,10 +1,10 @@
-[![GoDoc](https://godoc.org/github.com/milosgajdos83/gollipse?status.svg)](https://godoc.org/github.com/milosgajdos83/gollipse)
+# gollipse
+
+[![GoDoc](https://godoc.org/github.com/milosgajdos83/gollipse/ellipse?status.svg)](https://godoc.org/github.com/milosgajdos83/gollipse/ellipse)
 [![License](https://img.shields.io/:license-apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Travis CI](https://travis-ci.org/milosgajdos83/gollipse.svg?branch=master)](https://travis-ci.org/milosgajdos83/gollipse)
 [![Go Report Card](https://goreportcard.com/badge/milosgajdos83/gollipse)](https://goreportcard.com/report/github.com/milosgajdos83/gollipse)
 [![codecov](https://codecov.io/gh/milosgajdos83/gollipse/branch/master/graph/badge.svg)](https://codecov.io/gh/milosgajdos83/gollipse)
-
-# gollipse
 
 `gollipse` provides a simple `Go` package which allows to easily create [ellipse](https://en.wikipedia.org/wiki/Ellipse) curve. The package provides a simple API to generate a predefined number of points on the ellipse curve which can then be plotted and saved as an image in a file.
 

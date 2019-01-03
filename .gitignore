@@ -4,17 +4,13 @@
 *.dll
 *.so
 *.dylib
+*.swp
 
 # Test binary, build with `go test -c`
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
 
 # Folders
 _obj
@@ -31,6 +27,9 @@ _cgo_defun.c
 _cgo_gotypes.go
 _cgo_export.*
 
+_testmain.go
+
+*.exe
 *.test
 *.prof
 
@@ -41,4 +40,4 @@ coverage.out
 # ignore HTML files produced by gosom
 *.html
 vendor/
-examples/confidence/confidence
+.DS_Store

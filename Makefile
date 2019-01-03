@@ -4,16 +4,14 @@ INSTALL=go install
 BUILDPATH=./_build
 PACKAGES=$(shell go list ./... | grep -v /examples/)
 EXAMPLES=$(shell find examples/* -maxdepth 0 -type d -exec basename {} \;)
+GO111MODULE=on
 
 examples: builddir
 	for example in $(EXAMPLES); do \
 		go build -o "$(BUILDPATH)/$$example" "examples/$$example/$$example.go"; \
 	done
 
-all: examples
-
-example: builddir
-	go build -o "$(BUILDPATH)/confidence" "examples/confidence/confidence.go"
+all: dep check test examples
 
 builddir:
 	mkdir -p $(BUILDPATH)
@@ -25,10 +23,10 @@ clean:
 	rm -rf $(BUILDPATH)
 
 godep:
-	go get -u github.com/golang/dep/cmd/dep
+	wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
-dep: godep
-	dep ensure
+dep:
+	go mod vendor || dep ensure -v
 
 check:
 	for pkg in ${PACKAGES}; do \

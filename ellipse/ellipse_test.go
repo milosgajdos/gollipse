@@ -36,30 +36,21 @@ func TestNewEllipse(t *testing.T) {
 	}
 }
 
-func TestNewDataConfidence(t *testing.T) {
+func TestNewWithConfidence(t *testing.T) {
 	assert := assert.New(t)
 
 	testCases := []struct {
-		x          []float64
-		y          []float64
-		confidence float64
-		err        bool
-		pnc        bool
+		m   *mat.Dense
+		c   float64
+		err bool
 	}{
-		{[]float64{}, []float64{1.0}, 0.05, false, true},
-		{[]float64{1.0, 2.0}, []float64{1.0}, 0.05, false, true},
-		{[]float64{1.0, 2.0}, []float64{1.0, 2.0}, 0, true, false},
-		{[]float64{1.0, 2.0}, []float64{1.0, 2.0}, 2.0, true, false},
-		{[]float64{1.0, 2.0}, []float64{1.0, 2.0}, 0.05, false, false},
+		{mat.NewDense(2, 2, []float64{1.0, 2.0, 1.0, 2.0}), 0, true},
+		{mat.NewDense(2, 2, []float64{1.0, 2.0, 1.0, 2.0}), 2.0, true},
+		{mat.NewDense(2, 2, []float64{1.0, 2.0, 1.0, 2.0}), 0.05, false},
 	}
 
 	for _, tc := range testCases {
-		if tc.pnc {
-			assert.Panics(func() { NewDataConfidence(tc.x, tc.y, tc.confidence) })
-			continue
-		}
-
-		ell, err := NewDataConfidence(tc.x, tc.y, tc.confidence)
+		ell, err := NewWithConfidence(tc.m, tc.c)
 		if !tc.err {
 			assert.NoError(err)
 			assert.NotNil(ell)
@@ -88,6 +79,15 @@ func TestEccentricity(t *testing.T) {
 	ell := Ellipse{a: 1.0, b: 3.0, angle: math.Pi}
 	ecc := ell.Eccentricity()
 	assert.NotZero(ecc)
+}
+
+func TestString(t *testing.T) {
+	assert := assert.New(t)
+
+	ell := Ellipse{a: 1.0, b: 3.0, angle: math.Pi}
+	exp := "Ellipse{a: 1.00, b: 3.00, angle: 3.14}"
+
+	assert.Equal(exp, ell.String())
 }
 
 func TestXYFromDense(t *testing.T) {
