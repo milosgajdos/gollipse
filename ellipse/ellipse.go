@@ -13,37 +13,37 @@ import (
 )
 
 // Ellipse is 2D ellipse
+//
 // For more information see: https://en.wikipedia.org/wiki/Ellipse
 type Ellipse struct {
+	x     float64
+	y     float64
 	a     float64
 	b     float64
 	angle float64
-	xmean float64
-	ymean float64
 }
 
-// New creates new Ellipse with given distance of major and minor vertices from the origin rotated
-// around the orgin by given angle in radians. Origin in this case is meant [0,0].
-// It returns error if either of the vertex distances (a or b) are not positive.
-// Note, major/minor axis lengths are defined as distance of the ellipse vertices on major/minor axis.
-// For more information please see: https://en.wikipedia.org/wiki/Ellipse#Ellipse_in_Cartesian_coordinates
-// New, however, accepts distance of major/minor vertices from the Ellipse *center* a.k.a. semi-major/minor axis.
+// New creates new Ellipse with origin [x,y], length of major/minor axis (mx,my) and rotation angle radians.
+// It returns error if either of the axis (a or b).
+// Note: the lengths of major/minor axis are defined as a distance between the ellipse vertices on major/minor axis.
+// however, this function accepts semi-major/minor lengths from the Ellipse origin.
+//
 // For more information please see: https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes
-func New(a, b, angle float64) (*Ellipse, error) {
+func New(x, y, a, b, angle float64) (*Ellipse, error) {
 	if a <= 0 || b <= 0 {
 		return nil, fmt.Errorf("Invald ellipse axis: (a: %.2f, b: %.2f)", a, b)
 	}
 
-	return &Ellipse{a: a, b: b, angle: angle, xmean: 0.0, ymean: 0.0}, nil
+	return &Ellipse{a: a, b: b, angle: angle, x: x, y: y}, nil
 }
 
-// NewWithConfidence creates new Ellipse from data m centered around data mean with confidence probability.
-// The suplied data is assumed to be from the Gaussian statistical distribution.
+// NewWithDataConfidence creates new Ellipse from data with origin being data mean and confidence probability.
+// The data is assumed to be of the Normal (a.k.a. Gaussian) distribution.
 // It panics if either of the folllowing happens:
 // * supplied data matrix is nil
 // * principal components could not be calculated from the supplied data
-// It returns error if the provided confidence value is not in (0,1> interval.
-func NewWithConfidence(data mat.Matrix, confidence float64) (*Ellipse, error) {
+// It returns error if confidence is not in (0,1> interval.
+func NewWithDataConfidence(data mat.Matrix, confidence float64) (*Ellipse, error) {
 	if confidence <= 0 || confidence > 1 {
 		return nil, fmt.Errorf("Invalid confidence level: %.2f", confidence)
 	}
@@ -80,10 +80,10 @@ func NewWithConfidence(data mat.Matrix, confidence float64) (*Ellipse, error) {
 	a := math.Sqrt(chi2.Quantile(confidence) * eigVals[0])
 	b := math.Sqrt(chi2.Quantile(confidence) * eigVals[1])
 
-	return &Ellipse{a: a, b: b, angle: angle, xmean: xmean, ymean: ymean}, nil
+	return &Ellipse{x: xmean, y: ymean, a: a, b: b, angle: angle}, nil
 }
 
-// LinePoints returns both Ellipse plotter.Line and plotter.Scatter points which can be used to plot Ellipse.
+// LinePoints returns both plotter.Line and plotter.Scatter which can be used to plot Ellipse.
 // It returns error if at least one of the ellipse data points contains a NaN or Infinity.
 func (e *Ellipse) LinePoints(size int) (*plotter.Line, *plotter.Scatter, error) {
 	// generate size number of ellipse points
@@ -118,8 +118,8 @@ func (e *Ellipse) LinePoints(size int) (*plotter.Line, *plotter.Scatter, error) 
 
 	// we need to shift ellipse points by data mean values
 	for i := range ellipseXYs {
-		ellipseXYs[i].X = ellipseXYs[i].X + e.xmean
-		ellipseXYs[i].Y = ellipseXYs[i].Y + e.ymean
+		ellipseXYs[i].X = ellipseXYs[i].X + e.x
+		ellipseXYs[i].Y = ellipseXYs[i].Y + e.y
 	}
 
 	return plotter.NewLinePoints(ellipseXYs)
@@ -132,7 +132,7 @@ func (e *Ellipse) Eccentricity() float64 {
 
 // String implements fmt.Stringer interface
 func (e *Ellipse) String() string {
-	return fmt.Sprintf("Ellipse{a: %.2f, b: %.2f, angle: %.2f}", e.a, e.b, e.angle)
+	return fmt.Sprintf("Ellipse{x: %.2f, y: %.2f, a: %.2f, b: %.2f, angle: %.2f}", e.x, e.y, e.a, e.b, e.angle)
 }
 
 // XYFromDense returns plotter.XYs from m, which stores X and Y coordinates in its 1st and 2nd column.

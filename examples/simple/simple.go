@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	ell, err := ellipse.New(50, 10, math.Pi/2)
+	ell, err := ellipse.New(10, 10, 50, 10, math.Pi/2)
 	if err != nil {
 		log.Fatalf("Failed to create ellipse: %v", err)
 	}
@@ -25,6 +25,14 @@ func main() {
 	p.X.Label.Text = "X"
 	p.Y.Label.Text = "Y"
 
+	legend, err := plot.NewLegend()
+	if err != nil {
+		log.Fatalf("Failed to create new plot legend")
+	}
+	legend.Top = true
+
+	p.Legend = legend
+
 	// generate ellipse curve: we request 100 points
 	line, _, err := ell.LinePoints(100)
 	if err != nil {
@@ -34,10 +42,10 @@ func main() {
 	// ellipse line plot
 	line.Color = color.RGBA{B: 255, A: 255}
 	p.Add(line)
-	p.Legend.Add("a=10,b=20,angle=pi/2", line)
+	p.Legend.Add("a=10\nb=20\nangle=pi/2", line)
 
 	// Save the plot to a PNG file.
-	if err := p.Save(4*vg.Inch, 4*vg.Inch, "example.png"); err != nil {
+	if err := p.Save(4*vg.Inch, 4*vg.Inch, "simple.png"); err != nil {
 		log.Fatalf("Failed to plot ellipse: %v", err)
 	}
 }

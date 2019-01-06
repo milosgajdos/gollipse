@@ -51,8 +51,6 @@ func main() {
 	xMean := stat.Mean(mat.Col(vals, 0, data), nil)
 	yMean := stat.Mean(mat.Col(vals, 1, data), nil)
 
-	fmt.Println("xMean:", xMean, "yMean:", yMean)
-
 	// plot mean values
 	var meanXYs plotter.XYs
 	meanVals := struct{ X, Y float64 }{xMean, yMean}
@@ -71,12 +69,10 @@ func main() {
 
 	// create new ellipse with 95% data confidence
 	confidence := 0.95
-	ell, err := ellipse.NewWithConfidence(data, confidence)
+	ell, err := ellipse.NewWithDataConfidence(data, confidence)
 	if err != nil {
 		log.Fatalf("Failed to create new ellipse: %v", err)
 	}
-
-	fmt.Println("Ellipse:", ell)
 
 	line, _, err := ell.LinePoints(size)
 	if err != nil {

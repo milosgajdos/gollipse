@@ -12,19 +12,21 @@ func TestNewEllipse(t *testing.T) {
 	assert := assert.New(t)
 
 	testCases := []struct {
+		x     float64
+		y     float64
 		a     float64
 		b     float64
 		angle float64
 		err   bool
 	}{
-		{0, 1.0, 4.5, true},
-		{0, 0, 4.5, true},
-		{1.0, -10.0, 20.3, true},
-		{10.0, 10.0, -5.6, false},
+		{0, 0, 0, 1.0, 4.5, true},
+		{0, 0, 0, 0, 4.5, true},
+		{0, 0, 1.0, -10.0, 20.3, true},
+		{0, 0, 10.0, 10.0, -5.6, false},
 	}
 
 	for _, tc := range testCases {
-		ell, err := New(tc.a, tc.b, tc.angle)
+		ell, err := New(tc.x, tc.y, tc.a, tc.b, tc.angle)
 		if !tc.err {
 			assert.NoError(err)
 			assert.Equal(tc.a, ell.a)
@@ -50,7 +52,7 @@ func TestNewWithConfidence(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		ell, err := NewWithConfidence(tc.m, tc.c)
+		ell, err := NewWithDataConfidence(tc.m, tc.c)
 		if !tc.err {
 			assert.NoError(err)
 			assert.NotNil(ell)
@@ -84,8 +86,8 @@ func TestEccentricity(t *testing.T) {
 func TestString(t *testing.T) {
 	assert := assert.New(t)
 
-	ell := Ellipse{a: 1.0, b: 3.0, angle: math.Pi}
-	exp := "Ellipse{a: 1.00, b: 3.00, angle: 3.14}"
+	ell := Ellipse{x: 0, y: 0, a: 1.0, b: 3.0, angle: math.Pi}
+	exp := "Ellipse{x: 0.00, y: 0.00, a: 1.00, b: 3.00, angle: 3.14}"
 
 	assert.Equal(exp, ell.String())
 }
