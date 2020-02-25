@@ -1,10 +1,9 @@
 # gollipse
 
-[![GoDoc](https://godoc.org/github.com/milosgajdos83/gollipse/ellipse?status.svg)](https://godoc.org/github.com/milosgajdos83/gollipse/ellipse)
+[![GoDoc](https://godoc.org/github.com/milosgajdos/gollipse/ellipse?status.svg)](https://godoc.org/github.com/milosgajdos/gollipse/ellipse)
 [![License](https://img.shields.io/:license-apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Travis CI](https://travis-ci.org/milosgajdos83/gollipse.svg?branch=master)](https://travis-ci.org/milosgajdos83/gollipse)
-[![Go Report Card](https://goreportcard.com/badge/milosgajdos83/gollipse)](https://goreportcard.com/report/github.com/milosgajdos83/gollipse)
-[![codecov](https://codecov.io/gh/milosgajdos83/gollipse/branch/master/graph/badge.svg)](https://codecov.io/gh/milosgajdos83/gollipse)
+[![Travis CI](https://travis-ci.org/milosgajdos/gollipse.svg?branch=master)](https://travis-ci.org/milosgajdos/gollipse)
+[![Go Report Card](https://goreportcard.com/badge/milosgajdos/gollipse)](https://goreportcard.com/report/github.com/milosgajdos/gollipse)
 
 `gollipse` provides a simple `Go` package which allows to easily create [ellipse](https://en.wikipedia.org/wiki/Ellipse) curve. The package provides a simple API to generate a predefined number of points on the ellipse curve which can then be plotted and saved as an image in a file.
 
@@ -17,7 +16,7 @@ The package takes advange of the amazing [gonum](https://www.gonum.org) suite of
 Get the source code:
 
 ```
-$ go get -u github.com/milosgajdos83/gollipse
+$ go get -u github.com/milosgajdos/gollipse
 ```
 
 **Make sure you've got all the dependencies** (`go get -u` should retrieve them, but this project might use a specific version of `gonum` so make sure you run the following command):
@@ -44,7 +43,7 @@ import (
 	"log"
 	"math"
 
-	"github.com/milosgajdos83/gollipse/ellipse"
+	"github.com/milosgajdos/gollipse/ellipse"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/vg"
 )

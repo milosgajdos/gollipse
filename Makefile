@@ -22,16 +22,12 @@ install:
 clean:
 	rm -rf $(BUILDPATH)
 
-godep:
-	wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-
 dep:
-	go mod vendor || dep ensure -v
+	go get ./...
 
 check:
 	for pkg in ${PACKAGES}; do \
 		go vet $$pkg || exit ; \
-		golint $$pkg || exit ; \
 	done
 
 test:

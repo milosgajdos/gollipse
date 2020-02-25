@@ -6,7 +6,7 @@ import (
 	"log"
 	"math/rand"
 
-	"github.com/milosgajdos83/gollipse/ellipse"
+	"github.com/milosgajdos/gollipse/ellipse"
 	"gonum.org/v1/gonum/mat"
 	"gonum.org/v1/gonum/stat"
 	"gonum.org/v1/plot"

@@ -61,7 +61,8 @@ func NewWithDataConfidence(data mat.Matrix, confidence float64) (*Ellipse, error
 		panic("Could not determine Principal Components")
 	}
 	eigVals := pc.VarsTo(nil)
-	eigVecs := pc.VectorsTo(nil)
+	var eigVecs mat.Dense
+	pc.VectorsTo(&eigVecs)
 
 	// Calculate Ellipse rotation angle from the largest eigenvector
 	// pc.VectorsTo returns eigenvalues/vectors in descending order

@@ -5,7 +5,7 @@ import (
 	"log"
 	"math"
 
-	"github.com/milosgajdos83/gollipse/ellipse"
+	"github.com/milosgajdos/gollipse/ellipse"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/vg"
 )
