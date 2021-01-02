@@ -1,8 +1,8 @@
-# gollipse
+# gollipse: plott confidence ellipse of 2D normally distributed data
 
-[![GoDoc](https://godoc.org/github.com/milosgajdos/gollipse/ellipse?status.svg)](https://godoc.org/github.com/milosgajdos/gollipse/ellipse)
+[![Build Status](https://github.com/milosgajdos/gollipse/workflows/CI/badge.svg)](https://github.com/milosgajdos/gollipse/actions?query=workflow%3ACI)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/milosgajdos/gollipse)
 [![License](https://img.shields.io/:license-apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Travis CI](https://travis-ci.org/milosgajdos/gollipse.svg?branch=master)](https://travis-ci.org/milosgajdos/gollipse)
 [![Go Report Card](https://goreportcard.com/badge/milosgajdos/gollipse)](https://goreportcard.com/report/github.com/milosgajdos/gollipse)
 
 `gollipse` provides a simple `Go` package which allows to easily create [ellipse](https://en.wikipedia.org/wiki/Ellipse) curve. The package provides a simple API to generate a predefined number of points on the ellipse curve which can then be plotted and saved as an image in a file.
@@ -19,7 +19,7 @@ Get the source code:
 $ go get -u github.com/milosgajdos/gollipse
 ```
 
-**Make sure you've got all the dependencies** (`go get -u` should retrieve them, but this project might use a specific version of `gonum` so make sure you run the following command):
+Get dependencies:
 
 ```
 $ make dep
