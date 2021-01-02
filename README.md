@@ -16,7 +16,7 @@ The package takes advange of the amazing [gonum](https://www.gonum.org) suite of
 Get the source code:
 
 ```
-$ go get -u github.com/milosgajdos/gollipse
+$ go get github.com/milosgajdos/gollipse
 ```
 
 Get dependencies:
